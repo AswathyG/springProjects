@@ -1,0 +1,68 @@
+<configuration>
+ 
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n" />
+    <property name="APP_LOG_ROOT" value="logs/temp"/>
+     
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+ 
+    <appender name="infoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${APP_LOG_ROOT}/infoLog.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${APP_LOG_ROOT}/infoLog-%i.log</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+      <appender name="errorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${APP_LOG_ROOT}/errorLog.log</file>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${APP_LOG_ROOT}/errorLog-%i.log</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+         <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>  
+   
+   
+    <logger name="com.springboot.logging" level="info">
+        <appender-ref ref="infoLog" />
+        <appender-ref ref="console" />
+    </logger>
+     
+    <logger name="com.springboot" level="error">
+        <appender-ref ref="errorLog" />
+        <appender-ref ref="console" />
+    </logger>
+
+    
+     <root level="info">
+        <appender-ref ref="console" />
+     </root>
+      
+</configuration>
+

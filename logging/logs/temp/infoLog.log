@@ -1,0 +1,7 @@
+2021-07-31T20:40:36.466+0530 INFO Starting LoggingApplication using Java 1.8.0_275 on datacloudschool with PID 20932 (/home/ashishmg/achus/interview_prep/spring-boot-projs/logging/target/classes started by ashishmg in /home/ashishmg/achus/interview_prep/spring-boot-projs/logging)
+2021-07-31T20:40:36.469+0530 INFO No active profile set, falling back to default profiles: default
+2021-07-31T20:40:38.055+0530 INFO Started LoggingApplication in 2.13 seconds (JVM running for 2.582)
+2021-07-31T20:40:53.481+0530 INFO Home method accessed!
+2021-07-31T20:41:11.376+0530 INFO Home method accessed!
+2021-07-31T20:41:17.138+0530 INFO Home method accessed!
+2021-07-31T20:41:22.988+0530 INFO Home method accessed!
